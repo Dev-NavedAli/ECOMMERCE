@@ -1,8 +1,9 @@
-# React + Vite
+1-install react-router-dom and go to main.jsx and change the strict mode tag to BrowserRouter and extract it from react-router-dom
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2-make folders like components,contxt,pages and delete app.css and install tailwind
 
-Currently, two official plugins are available:
+3-go pages folder and make 9 files home,about,cart,collection,conatact,login,orders,placeOrder and product.jsx 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4-make a file component folder name #Navbar.jsx and import the file into app.jsx and import {Route and Routes} from react-router-dom
+
+5- make a tag <Routes> and give all 9 like this <Route path='/' element={<Home/>} /> like this
