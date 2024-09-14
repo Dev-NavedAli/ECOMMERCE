@@ -6,4 +6,6 @@
 
 4-make a file component folder name #Navbar.jsx and import the file into app.jsx and import {Route and Routes} from react-router-dom
 
-5- make a tag <Routes> and give all 9 like this <Route path='/' element={<Home/>} /> like this
+5- make a tag <Routes> and give all 9 like this <Route path='/' element={} /> like this
+
+#doubt = if u wanted to know how the dropdown button display filters and hide in big displays using tailwind goto collection.jsx 

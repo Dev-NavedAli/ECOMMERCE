@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <p className='text-xl font-medium mb-5'>Get in touch</p>
-                    <ul lassName='flex flex-col gap-1 text-gray-600'>
+                    <ul className='flex flex-col gap-1 text-gray-600'>
                         <li>+91 8077669812</li>
                         <li>nomanAli50997@gmail.com</li>
                     </ul>
