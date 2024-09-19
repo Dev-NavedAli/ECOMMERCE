@@ -10,6 +10,8 @@ const ShopContextProvider = (props) => {
     const delivery_fee = 10;
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false)
+    //---------------------------- Add to Cart functionality-------------------------------------
+    
     const [cartItem, setCartItem] = useState({});
 
     const addToCart = async (itemId, size) => {
@@ -36,15 +38,26 @@ const ShopContextProvider = (props) => {
         setCartItem(cartData)
     }
 
-
-    useEffect(() => {
-        console.log(cartItem)
-    }, [cartItem])
+    const getCartCount = ()=>{
+        let totalCount = 0
+        for (const items in cartItem){
+            for(const item in cartItem[items]){
+                try {
+                    if(cartItem[items][item] > 0){
+                        totalCount += cartItem[items][item]
+                    }
+                } catch (error) {
+                    
+                }
+            }
+        }
+        return totalCount;
+    }
 
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
-        cartItem, addToCart
+        cartItem, addToCart,getCartCount
 
     }
     return (
