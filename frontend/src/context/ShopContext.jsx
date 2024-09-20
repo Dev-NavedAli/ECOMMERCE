@@ -11,7 +11,7 @@ const ShopContextProvider = (props) => {
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false)
     //---------------------------- Add to Cart functionality-------------------------------------
-    
+
     const [cartItem, setCartItem] = useState({});
 
     const addToCart = async (itemId, size) => {
@@ -22,7 +22,7 @@ const ShopContextProvider = (props) => {
         }
 
         let cartData = structuredClone(cartItem);
-        
+
         if (cartData[itemId]) {
             if (cartData[itemId][size]) {
                 cartData[itemId][size] += 1
@@ -38,30 +38,47 @@ const ShopContextProvider = (props) => {
         setCartItem(cartData)
     }
 
-    const getCartCount = ()=>{
+    const getCartCount = () => {
         let totalCount = 0
-        for (const items in cartItem){
+        for (const items in cartItem) {
+            for (const item in cartItem[items]) {
+                try {
+                    if (cartItem[items][item] > 0) {
+                        totalCount += cartItem[items][item]
+                    }
+                } catch (error) {
+
+                }
+            }
+        }
+        return totalCount;
+    }
+    const updateQuantity = async (itemId, size, quantity) => {
+        let cartData = structuredClone(cartItem);
+        cartData[itemId][size] = quantity;
+        setCartItem(cartData);
+    }
+
+    const getCartAmount = ()=>{
+        let totalAmount = 0;
+        for(const items in cartItem){
+            let itemInfo = products.find((product)=> product._id === items);
             for(const item in cartItem[items]){
                 try {
                     if(cartItem[items][item] > 0){
-                        totalCount += cartItem[items][item]
+                        totalAmount += itemInfo.price * cartItem[items][item]
                     }
                 } catch (error) {
                     
                 }
             }
         }
-        return totalCount;
+        return totalAmount
     }
-const updateQuantity = async(itemId,size,quantity)=>{
-   let cartData = structuredClone(cartItem);
-   cartData[itemId][size] = quantity;
-   setCartItem(cartData);
-}
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
-        cartItem, addToCart,getCartCount,updateQuantity
+        cartItem, addToCart, getCartCount, updateQuantity,getCartAmount
 
     }
     return (
