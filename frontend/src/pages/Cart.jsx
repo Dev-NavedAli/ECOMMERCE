@@ -5,7 +5,7 @@ import { assets } from '../assets/assets'
 import CartTotal from '../components/CartTotal'
 
 const Cart = () => {
-  const { products, currency, cartItem, updateQuantity } = useContext(ShopContext)
+  const { products, currency, cartItem, updateQuantity , navigate} = useContext(ShopContext)
 
   const [cartData, setCartData] = useState([])
 
@@ -56,6 +56,9 @@ const Cart = () => {
       <div className="flex justify-end my-20">
         <div className='w-full sm:w-[450px]'>
           <CartTotal />
+          <div className="w-full text-end">
+            <button className='bg-black text-white text-sm my-8 px-8 py-3 active:bg-gray-600' onClick={()=>navigate('/place-order')}>PROCEED TO CHECKOUT</button>
+          </div>
         </div>
       </div>
 
