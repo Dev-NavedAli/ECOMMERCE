@@ -4,7 +4,7 @@ import Tittle from '../components/Tittle'
 import { assets } from '../assets/assets'
 
 const Cart = () => {
-  const { products, currency, cartItem } = useContext(ShopContext)
+  const { products, currency, cartItem , updateQuantity } = useContext(ShopContext)
 
   const [cartData, setCartData] = useState([])
 
@@ -44,8 +44,8 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <input type="number" min={1} defaultValue={item.quantity} className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' />
-                <img src={assets.bin_icon} alt="" className='w-4 mr-4 sm:w-5 cursor-pointer' />
+                <input type="number" min={1} defaultValue={item.quantity} className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1'  onChange={(e)=>e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id,item.size,Number(e.target.value)) } />
+                <img src={assets.bin_icon} alt="" className='w-4 mr-4 sm:w-5 cursor-pointer' onClick={()=>updateQuantity(item._id,item.size,0)} />
               </div>
             )
           })
