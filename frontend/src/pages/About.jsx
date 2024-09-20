@@ -26,15 +26,16 @@ const about = () => {
       <div className='flex flex-col md:flex-row text-sm mb-20 gap-2'>
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
           <b>Quality Assurance : </b>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus expedita ea voluptas accusantium corporis atque eligendi ad neque assumenda. Pariatur temporibus nesciunt corrupti esse recusandae officia iusto dolorum cumque consequuntur?</p>
+          <p>We meticulously select and vet each product to ensure it meets the strigent quality standards. </p>
         </div>
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
           <b>Convinience : </b>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus expedita ea voluptas accusantium corporis atque eligendi ad neque assumenda. Pariatur temporibus nesciunt corrupti esse recusandae officia iusto dolorum cumque consequuntur?</p>
+          <p>With our user-friendly interface and hasle-free ordering process shopping has never been easier.
+          </p>
         </div>
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
           <b>Exceptional Customer service : </b>
-          <p className='text-gray-600'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus expedita ea voluptas accusantium corporis atque eligendi ad neque assumenda. Pariatur temporibus nesciunt corrupti esse recusandae officia iusto dolorum cumque consequuntur?</p>
+          <p className='text-gray-600'>Our team of dedicated professionals is here to assist you the way, ensuring your satisfaction is our first priority </p>
         </div>
       </div>
       <NewsLetterBox/>
