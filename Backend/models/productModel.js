@@ -43,7 +43,7 @@ const productSchema = new Schema({
 
 
 //if my las two line give error use this
-// const productModel = mongoose,model.product || mongoose.model("product",productSchema)
+// const productModel = mongoose.model.product || mongoose.model("product",productSchema)
 // export default productModel
 
 const productModel = mongoose.model("productModel",productSchema)
