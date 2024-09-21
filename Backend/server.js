@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import connectDb from "./config/mongodb.js";
+import connectCloudinary from "./config/cloudinary.js";
 
 dotenv.config();
 
@@ -9,11 +10,8 @@ dotenv.config();
 const app = express()
 const port = process.env.PORT;
 connectDb()
-.then(()=>{
-    console.log('conncetd to db successfully')
-}).catch((err)=>{
-    console.log(err)
-})
+.then(()=>{console.log('conncetd to db successfully')}).catch((err)=>{console.log(err)})
+connectCloudinary
 
 //middlewares
 app.use(express.json())
