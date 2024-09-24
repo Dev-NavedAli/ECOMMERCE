@@ -12,4 +12,4 @@
 
 #BACKEND
 
-package using-------npm i cors dotenv express jsonwebtoken mongoose ejs nodemon razorpay stripe validator cloudinary bcrypt
+package using-------npm i cors dotenv express jsonwebtoken mongoose ejs nodemon razorpay stripe validator cloudinary bcrypt,multer ,multer-storage-cloudinary,cloudinary
