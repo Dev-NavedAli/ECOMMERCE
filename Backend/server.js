@@ -7,7 +7,8 @@ import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js"
 
 dotenv.config();
-
+connectCloudinary();
+console.log('Api Key : ',process.env.CLOUDINARY_API_KEY)
 //App Config
 const app = express()
 const port = process.env.PORT;
