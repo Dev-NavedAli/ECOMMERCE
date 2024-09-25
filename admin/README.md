@@ -17,4 +17,5 @@ step7--------"How to connect backend api to admin panel"
 isme hm root pe .env bna lenge jisme apne backend ka url daal denge fir us env variable ko app.jsx me "export const
  backendUrl = import.meta.env.VITE_BACKEND_URL" export kr denge taaki kisi bhi file me esaily accesible rhe hmara ".envvariable" fir uske baad login.jsx me jaake by using axios hum "const response = await axios.post(backendUrl+'/api/user/admin',{email,password})" ye bhej denge lekin email pass whi hona chaihye jo hmne backend directory me .env ke andar daala tha aise hmare admin ka login.jsx se backend connect ho jaayega.
 
-step-8------how to log
+step-8------how to display the selected image by admin to upload
+go to Add.jsx and if  src={!image1?assets.upload_area:URL.createObjectURL(image1)} agar image na ho to deafult rahe upload pe agar image rahe to us image ko display kara do 
