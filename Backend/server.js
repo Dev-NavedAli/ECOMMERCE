@@ -19,9 +19,9 @@ connectCloudinary
 //middlewares
 app.use(express.json())
 app.use(cors())
-app.use(cors({
-    origin: 'https://hoppscotch.io'  // Only allow requests from Hoppscotch
-  }));
+// app.use(cors({
+//     origin: 'http://localhost:8080'  // Only allow requests from Hoppscotch
+//   }));
   
 
 app.use(express.json());
