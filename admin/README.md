@@ -11,3 +11,6 @@ step----React router dom use is project me aise hua hai sbse phle main.jsx me ja
 step5----Go to main.jsx and mount the app with "BrowserRouter" for react router dom
 
 step6----suppose agar hume chaihye ki kis link pe click kren to vo hme dikhe kis alag color me jaise hmare add,list and orders me ho ra ha Navlink by Default us link pe active class daal deti hai jis pr click kiya gya ho to simple hume css me jaake .active se class bnaakar border and border color dena hai 
+
+
+step7--------"How to connect backend api to admin panel" isme hm root pe .env bna lenge jisme apne backend ka url daal denge fir us env variable ko app.jsx me "export const backendUrl = import.meta.env.VITE_BACKEND_URL" export kr denge taaki kisi bhi file me esaily accesible rhe hmara ".envvariable" fir uske baad login.jsx me jaake by using axios hum "const response = await axios.post(backendUrl+'/api/user/admin',{email,password})" ye bhej denge lekin email pass whi hona chaihye jo hmne backend directory me .env ke andar daala tha aise hmare admin ka login.jsx se backend connect ho jaayega.

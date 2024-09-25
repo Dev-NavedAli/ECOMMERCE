@@ -1,17 +1,24 @@
+import axios from "axios"
 import React, { useState } from 'react'
+import { backendUrl } from "../App"
+import { toast } from "react-toastify"
 
-const Login = () => {
+const Login = ({setToken}) => {  //yha setToken ko destructure kiya hai jo as a prop a ra app.jsx se
   const [email,setEmail]  = useState('')
   const [password,setPassword]  = useState('')
+  
 
 
 
     const onSubmitHamdler = async(e)=>{
         try {
             e.preventDefault()
-            console.log(email,password);
-            
+            const response = await axios.post(backendUrl+'/api/user/admin',{email,password})
+            if(response.data.token){
+                setToken(response.data.token)
+            }
         } catch (error) {
+            toast.error(error.message)
             console.log(error)
         }
       
