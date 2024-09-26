@@ -13,3 +13,7 @@
 #BACKEND
 
 package using-------npm i cors dotenv express jsonwebtoken mongoose ejs nodemon razorpay stripe validator cloudinary bcrypt,multer ,multer-storage-cloudinary,cloudinary
+
+
+How to integrate backend authenitcation api with frontend
+make a state variable in Shopcontext.jsx export it using value. go to login.jsx import token,setToken,navigate,backendUrl from useContext(shopContext) and then make three state variable for name,email and password or hum uske baad jo inputs hai login.jsx me unme ye lga denge jaise jo name vaala input hai usme onChange={(e)=>setName(e.target.value)} isse jo bhi hmari value hogi jo input me user daalega vo hamre name vaale state variable me save jo jaayegi aise hi teeno me kr lenge uske baad submit handler me try catch block lgaka with the help of "Axios" hm araam se backend ki kisi bhi api pe reuest bhej skte hai
