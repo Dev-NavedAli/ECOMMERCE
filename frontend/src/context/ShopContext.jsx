@@ -71,7 +71,15 @@ const ShopContextProvider = (props) => {
     const updateQuantity = async (itemId, size, quantity) => {
         let cartData = structuredClone(cartItem);
         cartData[itemId][size] = quantity;
-        setCartItem(cartData);
+        setCartItem(cartData)
+        if (token) {     //neche isi ka ek function hai getUserCart name se
+            try {
+                await axios.post(`${backendUrl}/api/cart/update`, { itemId, size, quantity }, { headers: { token } })
+            } catch (error) {
+                console.log(error.message)
+                toast.error(error.message)
+            }
+        }
     }
 
     const getCartAmount = () => {
@@ -107,14 +115,34 @@ const ShopContextProvider = (props) => {
 
     }
 
+    const getUserCart = async(token)=>{
+        try {
+            const response = await axios.post(`${backendUrl}/api/cart/get`,{},{headers:{token}})
+            if(response.data.success){
+                setCartItem(response.data.cartData)  //yha se db se cart data update hoga state variable me
+            }
+        } catch (error) {
+            console.log(error)
+            toast.error(error.message)
+        }
+    }
+
     useEffect(() => {
         getProductData()
     }, [])
 
+    useEffect(()=>{
+        if(!token && localStorage.getItem('token')){     //refresh krne pr token chla jaata hai state variable se. 
+          //isiliye hm token ko localstorage me save kr denge or mauka or dobara state variable me store kr denge
+          setToken(localStorage.getItem('token'))
+          getUserCart(localStorage.getItem('token'))
+        }
+      },[])
+
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
-        cartItem, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, setToken, token, setCartItem
+        cartItem, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, setToken,token, setCartItem
 
     }
     return (

@@ -15,18 +15,20 @@ const login = () => {
     e.preventDefault()
     try {
       if (currentState === 'Sign Up') {
-        const response = await axios.post(`${backendUrl}/api/user/register`, { name, email, password });
+        const response = await axios.post(`${backendUrl}/api/user/register`, {name,email,password});
         if (response.data.success) {
-          setToken(response.data.token);
-          localStorage.setItem('token', response.data.token)
+          console.log(response)
+          setToken(response.data.token)
+          localStorage.setItem('token',response.data.token)
         } else {
           toast.error(response.data.message)
         }
       } else {
         const response = await axios.post(`${backendUrl}/api/user/login`, { email, password })
         if (response.data.success) {
+          console.log(response.data.token);
           setToken(response.data.token)
-          localStorage.getItem("token", response.data.token)
+          localStorage.setItem('token',response.data.token)
         } else {
           toast.error(error.message)
         }
@@ -46,10 +48,10 @@ const login = () => {
 
   useEffect(()=>{
     if(!token && localStorage.getItem('token')){     //refresh krne pr token chla jaata hai state variable se. 
-      //isiliye hm token ko localstorage me save kr denge or mauka or bobara state variable me store kr denge
+      //isiliye hm token ko localstorage me save kr denge or mauka or dobara state variable me store kr denge
       setToken(localStorage.getItem('token'))
     }
-  })
+  },[])
 
   return (
 

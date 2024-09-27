@@ -51,7 +51,7 @@ const updateCart = async(req,res)=>{
 
 
 // Get user cart data
-const getUserCart = async()=>{
+const getUserCart = async(req,res)=>{
     try {
         const {userId} = req.body
         const userData = await userModel.findById(userId)
