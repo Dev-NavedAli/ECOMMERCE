@@ -19,3 +19,6 @@ isme hm root pe .env bna lenge jisme apne backend ka url daal denge fir us env v
 
 step-8------how to display the selected image by admin to upload
 go to Add.jsx and if  src={!image1?assets.upload_area:URL.createObjectURL(image1)} agar image na ho to deafult rahe upload pe agar image rahe to us image ko display kara do 
+
+HOW TO DEVLOP FUNCTIONALITY WHEN THE USR CLICK TO COD OR RAZORPAY IT GO TO ITS PAGES IIN BACKEND
+create a file in conrollers name orderController and create a model name orderModel in model folder
