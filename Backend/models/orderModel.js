@@ -8,12 +8,12 @@ const orderSchema = new Schema({
         required:true
     },
     items:{
-        types:Array,
+        type:Array,
         required:true,
     },
     amount:{
         type:Number,
-        require:true
+        required:true
     },
     address:{
         type:Object,
@@ -39,6 +39,7 @@ const orderSchema = new Schema({
     }
 })
 
-const orderModel = mongoose.order || mongoose.model(orderModel,orderSchema)
+// const orderModel = mongoose.models.order || mongoose.model('order',orderSchema)
+const orderModel = mongoose.model("orderModel",orderSchema)
 
 export default orderModel;
