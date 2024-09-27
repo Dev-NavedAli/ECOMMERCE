@@ -15,7 +15,7 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false)
     const navigate = useNavigate()
     const [products, setProducts] = useState([])
-    const [token,setToken] = useState('')
+    const [token, setToken] = useState('')
     //---------------------------- Add to Cart functionality-------------------------------------
 
     const [cartItem, setCartItem] = useState({});
@@ -42,6 +42,15 @@ const ShopContextProvider = (props) => {
             cartData[itemId][size] = 1;
         }
         setCartItem(cartData)
+
+        if (token) {
+            try {
+                await axios.post(`${backendUrl}/api/cart/add`, { itemId, size }, { headers: { token } }) //agar hum logged in hue to hmara product database me bhi add ho jaayega
+            } catch (error) {
+                console.log(error.message)
+                toast.error(error.message)
+            }
+        }
     }
 
     const getCartCount = () => {
@@ -84,9 +93,9 @@ const ShopContextProvider = (props) => {
     const getProductData = async () => {
         try {
             const response = await axios.get(backendUrl + "/api/product/list")
-            if(response.data.success){
+            if (response.data.success) {
                 setProducts(response.data.products)
-            }else{
+            } else {
                 toast.error(response.data.message)
             }
 
@@ -98,14 +107,14 @@ const ShopContextProvider = (props) => {
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getProductData()
-    },[])
+    }, [])
 
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
-        cartItem, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl,setToken,token,setCartItem
+        cartItem, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, setToken, token, setCartItem
 
     }
     return (
