@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 
 const Placeorder = () => {
   const [method, setMethod] = useState('cod');
-  const { navigate, backendUrl, cartItems, setCartIems, getCartAmount, delivery_fee, products } = useContext(ShopContext)
+  const { navigate, backendUrl, token, cartItem , setCartItem , getCartCount ,  delivery_fee , products } = useContext(ShopContext)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,32 +22,37 @@ const Placeorder = () => {
   const onChangeHandler = (event) => {
     const name = event.target.name
     const value = event.target.value
-
     setFormData(data => ({ ...data, [name]: value }))
   }
 
-  const onSubmitHandler = async (e) => {
-    e.preventDefault()
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault()
     try {
+      
       let orderItems = []
-      for (const items in cartItems) {
-        for (const item in cartItems[item]) {
-          if (cartItems[items][item] > 0) { //it means that product is added in the cart and the quantity is greater than 0
-            const itemInfo = structuredClone(products.find(product => product._id === items))
-            if (itemInfo) {
-              itemInfo.size = item
-              itemInfo.quantity = cartItems[items][item]
-              orderItems.push(itemInfo)
-            }
+
+      for(const items in cartItem){
+        for(const item in cartItem[items]){
+          if(cartItem[items][item] > 0){
+              const itemInfo = structuredClone(products.find(product=> product._id === items))
+              if (itemInfo) {
+                itemInfo.size = item
+                itemInfo.quantity = cartItem[items][item]
+                orderItems.push(itemInfo)
+                
+              }
           }
+            
         }
       }
-      console.log(orderItems);
+      console.log(orderItems)
 
     } catch (error) {
-
+      
     }
   }
+
 
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h[80vh] border-t'>
@@ -95,7 +100,6 @@ const Placeorder = () => {
             </div>
             <div className='w-full text-end mt-8'>
               <button type='submit' className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
-
             </div>
           </div>
 

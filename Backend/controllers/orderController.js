@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js"
 
 const placeOrder = async(req,res)=>{
     try {
-        const { userId , items , amount , address } = req.body
+        const { userId , items , amount , address } = req.body;
 
         const orderData = {
             userId,
