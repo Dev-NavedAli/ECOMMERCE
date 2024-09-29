@@ -27,7 +27,6 @@ const App = () => {
       <ToastContainer/>
       {token === "" ? <Login setToken={setToken} /> :
         <>
-        {console.log(backendUrl)}
           <Navbar setToken={setToken} />
           <hr />
           <div className="flex w-full">
