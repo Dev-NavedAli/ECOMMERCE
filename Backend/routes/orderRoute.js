@@ -12,7 +12,7 @@ orderRouter.post('/status',adminAuth,updateStatus)
 // Payment Feautures
 orderRouter.post('/place',authUser,placeOrder)
 orderRouter.post('/stripe',authUser,placeOrderStripe)
-orderRouter.post('/razorpay',authUser,placeOrderRazorpay)
+// orderRouter.post('/razorpay',authUser,placeOrderRazorpay)
 
 
 // User Feature
