@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 
 const Placeorder = () => {
   const [method, setMethod] = useState('cod');
-  const { navigate, backendUrl, token, cartItem , setCartItem , getCartCount , getCartAmount , delivery_fee , products } = useContext(ShopContext)
+  const { navigate, backendUrl, token, cartItem, setCartItem, getCartCount, getCartAmount, delivery_fee, products } = useContext(ShopContext)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,21 +31,21 @@ const Placeorder = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault()
     try {
-      
+
       let orderItems = []
 
-      for(const items in cartItem){
-        for(const item in cartItem[items]){
-          if(cartItem[items][item] > 0){
-              const itemInfo = structuredClone(products.find(product=> product._id === items))
-              if (itemInfo) {
-                itemInfo.size = item
-                itemInfo.quantity = cartItem[items][item]
-                orderItems.push(itemInfo)
-                
-              }
+      for (const items in cartItem) {
+        for (const item in cartItem[items]) {
+          if (cartItem[items][item] > 0) {
+            const itemInfo = structuredClone(products.find(product => product._id === items))
+            if (itemInfo) {
+              itemInfo.size = item
+              itemInfo.quantity = cartItem[items][item]
+              orderItems.push(itemInfo)
+
+            }
           }
-            
+
         }
       }
       let orderData = {
@@ -53,19 +53,27 @@ const Placeorder = () => {
         items: orderItems,
         amount: getCartAmount() + delivery_fee
       }
-      switch  (method){
+      switch (method) {
 
         // ApI calls for COD
         case 'cod':
-          const response  = await axios.post(`${backendUrl}/api/order/place`,orderData,{headers:{token}})
-          console.log(response.data);
-          
+          const response = await axios.post(`${backendUrl}/api/order/place`, orderData, { headers: { token } })
           if (response.data.success) {
             setCartItem({})
             navigate('/orders')
-          }else{
+          } else {
             toast.error(response.data.message)
           }
+          break;
+        case 'stripe':
+          const responseStripe = await axios.post(backendUrl + '/api/order/stripe', orderData, { headers: { token } })
+          if (responseStripe.data.success) {
+            const { session_url } = responseStripe.data
+            window.location.replace(session_url)
+          } else {
+            toast.error(responseStripe.data.message)
+          }
+
           break;
 
         default:
@@ -73,9 +81,9 @@ const Placeorder = () => {
       }
 
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       toast.error(error.message)
-      
+
     }
   }
 

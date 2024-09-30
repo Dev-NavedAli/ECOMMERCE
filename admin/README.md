@@ -20,10 +20,17 @@ isme hm root pe .env bna lenge jisme apne backend ka url daal denge fir us env v
 step-8------how to display the selected image by admin to upload
 go to Add.jsx and if  src={!image1?assets.upload_area:URL.createObjectURL(image1)} agar image na ho to deafult rahe upload pe agar image rahe to us image ko display kara do 
 
-HOW TO DEVLOP FUNCTIONALITY WHEN THE USER CLICK TO COD OR RAZORPAY IT GO TO ITS PAGES IIN BACKEND
+ # HOW TO DEVLOP FUNCTIONALITY WHEN THE USER CLICK TO COD OR RAZORPAY IT GO TO ITS PAGES IIN BACKEND
 create a file in controllers name orderController.js and create a schema of placeorder name  orderModel.js in model folder,and make orderRoute.js in routes folder and  make five function in orderController.js  placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrder, updateStatus and export all of them and go to orderRoute.js and import all functions mentioned above and and make routing  like orderRouter.post('/list',adminAuth,allOrders) and export orderRouter() then go to server.js and import orderRouter from the orderRoute.js and  write this app.use('/api/order',orderRouter ) uske baad apne controllers function me code krne ke baad  hum frontend pe jaake placeOrder.jsx vaali file me jaauyenge or usme ek state Variable bna lenge or inputs pe onChange lga denge or state variable ka setter function call krke data state variable me le lenge onSubmitHandler function or OnChangeHandler ki help se
 
 
-HOW TO CHANGE THE ORDER STATUS USING ADMIN PANEL
+# HOW TO CHANGE THE ORDER STATUS USING ADMIN PANEL
 
 contorller.js me jaake updateStatus me jaake me jaake  orderId or status nikaal liya req.body se uske baad ordelMOdel me findByIdnAndUpdate lga ke usme orderId se find kiya and status ko update  paas kr diya fir Order.jsx me statusHandler naam ka function bna liya or usme do para le liye orderId and event le liye uske baad axios se post request bhej denge url pe or usme orderId for backend ke liye pass krenge or status me event.target.value le lenge or select tag me onChange={(event)=> statusHandler(event,order._id)} value={order.status}  ye daaal denge isse db me order ka status update ho jaayega 
+
+
+
+# PAYMENT INTEGRATION USING STRIPE
+
+step1-----make a stripe account and copy stripesecret key and save it to our .env file name <b> STRIPE_SECRET_KEY </b>
+step2--- import the stripe from stripe pkj 
