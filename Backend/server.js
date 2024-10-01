@@ -20,14 +20,7 @@ connectCloudinary
 
 //middlewares
 app.use(express.json())
-  
-const corsOptions = {
-    origin: 'https://66fb9bfa765445cc96646299--singular-croissant-341c21.netlify.app', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  };
-  
-  app.use(cors(corsOptions));
+app.use(cors());
   
 //Api End points
 
