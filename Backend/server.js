@@ -21,7 +21,7 @@ connectCloudinary
 //middlewares
 app.use(express.json())  
 const corsOptions = {
-    origin: ['https://ecommerce-frontend-eight-xi.vercel.app','https://ecommerce-admin-panel-chi-ecru.vercel.app']
+    origin: 'https://ecommerce-frontend-eight-xi.vercel.app',
   };
   
 app.use(cors(corsOptions));
