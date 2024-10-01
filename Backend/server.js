@@ -20,7 +20,24 @@ connectCloudinary
 
 //middlewares
 app.use(express.json())
-app.use(cors());
+const allowedOrigins = [
+    'http://localhost:5173/',  // First frontend URL
+    'https://ecommerce-backend-puce-eight.vercel.app'  // Second frontend URL
+  ];
+  
+  // CORS configuration
+  app.use(cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);  // Allow the origin
+      } else {
+        callback(new Error('Not allowed by CORS'));  // Block the origin
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }));
+  
   
 //Api End points
 
