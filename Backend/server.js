@@ -20,11 +20,31 @@ connectCloudinary
 
 //middlewares
 app.use(express.json())  
-const corsOptions = {
-    origin: 'https://ecommerce-frontend-eight-xi.vercel.app',
+
+
+const allowedOrigins = [
+    'https://ecommerce-frontend-eight-xi.vercel.app',
+    'https://ecommerce-admin-panel-chi-ecru.vercel.app' // Replace with your second URL
+  ];
+  
+  const corsOptions = {
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error('Not allowed by CORS')); // Reject the request
+      }
+    },
   };
   
-app.use(cors(corsOptions));
+  app.use(cors(corsOptions))
+
+
+// const corsOptions = {
+//     origin: 'https://ecommerce-frontend-eight-xi.vercel.app',
+//   };
+  
+// app.use(cors(corsOptions));
 
   
   
