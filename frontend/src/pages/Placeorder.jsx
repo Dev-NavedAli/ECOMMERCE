@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const Placeorder = () => {
+const PlaceOrder = () => {
   const [method, setMethod] = useState('cod');
   const { navigate, backendUrl, token, cartItem, setCartItem, getCartCount, getCartAmount, delivery_fee, products } = useContext(ShopContext)
   const [formData, setFormData] = useState({
@@ -147,4 +147,4 @@ const Placeorder = () => {
   )
 }
 
-export default Placeorder
+export default PlaceOrder
