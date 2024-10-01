@@ -24,7 +24,7 @@ app.use(express.json())
 
 const allowedOrigins = [
     'https://ecommerce-frontend-eight-xi.vercel.app',
-    'https://ecommerce-admin-panel-chi-ecru.vercel.app/'
+    'https://ecommerce-admin-panel-chi-ecru.vercel.app'
   ];
   
   const corsOptions = {
